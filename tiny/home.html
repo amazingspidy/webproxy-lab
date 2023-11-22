@@ -1,7 +1,26 @@
-<html>
-<head><title>test</title></head>
-<body> 
-<img align="middle" src="godzilla.gif">
-Dave O'Hallaron
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="utf-8">
+  <title>Tiny Web Server</title>
+  <style>
+    video {
+      max-width: 80%;
+      display: block;
+      margin: 20px auto;
+    }
+  </style>
+</head>
+<body>
+  <h1>당구치고싶다!!!</h1>
+  <video muted autoplay loop>
+    <source src="billiard.mp4" type="video/mp4">
+    <strong>Your browser does not support the video tag.</strong>
+  </video>
+  <form action="/cgi-bin/adder" method="GET">
+    <p>first number: <input type="text" name="first"/></p>
+    <p>second number: <input type="text" name="second"/></p>
+    <input type="submit" value="Submit"/>
+  </form>
 </body>
 </html>

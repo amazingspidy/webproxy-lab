@@ -246,8 +246,16 @@ do
     echo "   Fetching ./tiny/${file} into ${NOPROXY_DIR} directly from Tiny"
     download_noproxy $NOPROXY_DIR ${file} "http://localhost:${tiny_port}/${file}"
 
+
+    # Print the port numbers
+   
+
     # Compare the two files
     echo "   Comparing the two files"
+    #echo "   File in PROXY_DIR: ${PROXY_DIR}/${file}"
+    #cat ${PROXY_DIR}/${file}
+    #echo "   File in NOPROXY_DIR: ${NOPROXY_DIR}/${file}"
+    #cat ${NOPROXY_DIR}/${file}
     diff -q ${PROXY_DIR}/${file} ${NOPROXY_DIR}/${file} &> /dev/null
     if [ $? -eq 0 ]; then
         numSucceeded=`expr ${numSucceeded} + 1`

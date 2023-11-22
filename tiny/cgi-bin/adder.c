@@ -5,6 +5,34 @@
 #include "csapp.h"
 
 int main(void) {
+  char *buf, *arg1, *arg2;
+  char content[MAXLINE];
+  int n1 = 0, n2 = 0;
+
+  /* Read QUERY_STRING from environment variable */
+  if ((buf = getenv("QUERY_STRING")) != NULL) {
+    arg1 = strtok(buf, "&");
+    arg2 = strtok(NULL, "&");
+
+    if (arg1 != NULL && arg2 != NULL) {
+      n1 = atoi(arg1 + strlen("first="));
+      n2 = atoi(arg2 + strlen("second="));
+    }
+  }
+
+  sprintf(content, "QUERY_STRING=%s", buf);
+  sprintf(content, "Welcome to add.com: ");
+  sprintf(content, "%sTHE Internet addition portal.\r\n<p>", content);
+  sprintf(content, "%sThe answer is: %d + %d = %d\r\n<p>", content, n1, n2, n1 + n2);
+  sprintf(content, "%sThanks for visiting!\r\n", content);
+
+  /* Generate the HTTP response */
+  printf("Connection: close\r\n");
+  printf("Content-length: %d\r\n", (int)strlen(content));
+  printf("Content-type: text/html\r\n\r\n");
+  printf("%s", content);
+  fflush(stdout);
+
   exit(0);
 }
 /* $end adder */
