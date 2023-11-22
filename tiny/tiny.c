@@ -166,10 +166,10 @@ void serve_static(int fd, char *filename, int filesize, char *method) {
    }
 
   /*응답바디를 클라이언트에게 보낸다*/
-  srcfd = Open(filename, O_RDONLY, 0);  //요청된 파일을 열고 파일 디스크립터(srcfd)를 얻습니다.
-  // srcp = Mmap(0, filesize, PROT_READ, MAP_PRIVATE, srcfd, 0);  //Mmap 함수를 사용하여 파일을 메모리 매핑하고, 매핑된 메모리의 포인터(srcp)를 얻습니다.
-  // Close(srcfd);    //파일 디스크립터를 닫습니다
-  // Rio_writen(fd, srcp, filesize);  //메모리 매핑된 파일을 클라이언트에게 전송합니다.
+  srcfd = Open(filename, O_RDONLY, 0);  //요청된 파일을 열고 파일 디스크립터(srcfd)를 얻음.
+  // srcp = Mmap(0, filesize, PROT_READ, MAP_PRIVATE, srcfd, 0);  //Mmap 함수를 사용하여 파일을 메모리 매핑하고, 매핑된 메모리의 포인터(srcp)를 얻음.
+  // Close(srcfd);    //파일 디스크립터를 닫음
+  // Rio_writen(fd, srcp, filesize);  //메모리 매핑된 파일을 클라이언트에게 전송.
   // Munmap(srcp, filesize);
 
   srcp = (char *)malloc(filesize);  //malloc과 Mmap의 가장큰차이: Mmap은 매핑과 동시에 데이터를 넣어줌. malloc은 공간할당만해줌.
